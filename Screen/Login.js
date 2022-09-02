@@ -40,14 +40,24 @@ function LogIn(props) {
                     }} source={icon} />
                 </View>
                 <Input onChange={setUserName} placeholder='User name' icon={() => (
-                    <FontAwesome name="user-circle-o" size={30} color="#1C2348" />
+                    <FontAwesome name="user-circle-o" size={25} color="#1C2348" />
                 )} />
                 <Input onChange={setPassword} placeholder='Password' icon={() => (
-                    <Entypo name="lock" size={30} color="#1C2348" />
+                    <Entypo name="lock" size={25} color="#1C2348" />
                 )} />
                 <Button onPress={() => { props.navigation.navigate('Home') }} buttonName='LOG IN' disable={UserName && Password ? false : true}>
 
                 </Button>
+                <TouchableOpacity onPress={() => { props.navigation.navigate('Device Login') }} style={{
+                    marginTop: 20,
+                }}>
+                    <Text style={{
+                        fontWeight: 'bold',
+                        color: '#1C2348',
+                    }} >
+                        Device Login ?
+                    </Text>
+                </TouchableOpacity>
                 <TouchableOpacity onPress={() => { props.navigation.navigate('Forget Password') }} style={{
                     marginTop: 20,
                 }}>

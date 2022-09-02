@@ -5,7 +5,7 @@ function Input(props) {
     
     return (
         <View style={{
-            height: 50,
+            height: 45,
             width:'90%',
             borderRadius: 25,
             borderColor:'#808080',
@@ -16,6 +16,7 @@ function Input(props) {
             marginBottom:10,
             flexDirection:'row',
             paddingHorizontal: 15,
+            backgroundColor:'white'
         
         
         }}>

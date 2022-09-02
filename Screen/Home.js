@@ -10,6 +10,7 @@ import Header from '../Components/Header';
 import Bottom from '../Components/Bottom';
 import Profile from './Profile';
 import Location from './Location';
+import LocationHeader from '../Components/LocationHeader';
 
 function Home(props) {
     const navigation=props.navigation
@@ -17,7 +18,7 @@ function Home(props) {
         <Tab.Navigator tabBar={(props)=><Bottom {...props}/>}>
         <Tab.Screen options={{header:(props)=><Header {...props} />}} name="Home Screen" component={HomeScreen} />
         <Tab.Screen options={{headerShown:false}} name="Profile" component={Profile} />
-        <Tab.Screen options={{headerShown:false}} name="Location" component={Location} />
+        <Tab.Screen options={{header:(props)=><LocationHeader {...props} />}} name="Location" component={Location} />
         
         
         

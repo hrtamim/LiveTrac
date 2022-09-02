@@ -6,13 +6,13 @@ import Input from './../Components/Input';
 function Header(props) {
     const [Search, setSearch] = React.useState(null);
     return (
-        <View style={{
-            height: 80,
-            backgroundColor: 'white',
+        <View style={[{
+            height: 60,
+            backgroundColor: "#fbfbfb",
             alignItems: 'center',
-        }}>
+        },props.style]}>
             <View style={{
-                
+                height:20,
                 width: '90%',
             }}>
                 <Input onFocus={() => props.navigation.navigate('Search')} onChange={setSearch} placeholder='Search' icon={() => (

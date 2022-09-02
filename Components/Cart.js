@@ -1,28 +1,27 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet,TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 function Cart(props) {
     const data = props.data
     const navigation = useNavigation()
     return (
         <TouchableOpacity onPress={() => { navigation.navigate('Food Details') }} style={{
-            height: 190,
-            margin: 10,
-
+            height: 170,
+            marginTop: 5,
             shadowOffset: {
                 height: 1,
                 width: 1,
             },
-            shadowColor: "black",
-            shadowRadius: 10,
-            elevation: 10,
-            shadowOpacity: .5,
+            shadowColor: "#808080",
+            shadowRadius: 5,
+            elevation: 5,
+            shadowOpacity: .1,
             borderRadius: 10,
-            padding: 10,
+
             flexDirection: 'row',
             backgroundColor: 'white',
         }}>
@@ -51,17 +50,17 @@ function Cart(props) {
 
 
                 }}>
-                    Multiple fast food item
+                Multiple fast food item
                 </Text>
                 <Text style={{
                     color: '#808080',
                     fontWeight: 'normal',
                     marginTop: 5,
-
+                    textAlign: 'justify'
 
 
                 }}>
-                    {data.Description}
+                {data.Description}
                 </Text>
                 <View style={styles.box}>
                     <MaterialIcons style={{

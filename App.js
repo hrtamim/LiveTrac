@@ -9,6 +9,10 @@ import Home from './Screen/Home';
 import Search from './Screen/Search';
 import FoodDetails from './Screen/FoodDetails';
 import OrderConfirmation from './Screen/OrderConfirmation';
+import LocationSearch from './Screen/LocationSearch';
+import EditPtofile from './Screen/EditProfile';
+import DeviceLogin from './Screen/DeviceLogin';
+import ServiceStatus from './Screen/ServiceStatus';
 
 
 
@@ -24,6 +28,10 @@ export default function App() {
         <Stack.Screen options={{headerShown:false}} name="Search" component={Search} />
         <Stack.Screen options={{headerShown:false}} name="Food Details" component={FoodDetails} />
         <Stack.Screen options={{headerShown:false}} name="Order Confirmation" component={OrderConfirmation} />
+        <Stack.Screen options={{headerShown:false}} name="LocationSearch" component={LocationSearch} />
+        <Stack.Screen options={{headerShown:false}} name="Edit Profile" component={EditPtofile} />
+        <Stack.Screen options={{headerShown:false}} name="Device Login" component={DeviceLogin} />
+        <Stack.Screen options={{headerShown:false}} name="Service Status" component={ServiceStatus} />
         </Stack.Navigator>
     </NavigationContainer>
   );

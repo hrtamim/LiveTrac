@@ -8,7 +8,7 @@ function FoodCart(props) {
     const navigation = useNavigation()
     return (
         <TouchableOpacity onPress={() => { navigation.navigate('Food Details') }}  style={{
-            height: 100,
+            
             margin: 5,
 
             shadowOffset: {

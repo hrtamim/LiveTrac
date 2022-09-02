@@ -36,6 +36,7 @@ function Register(props) {
             <View style={{
                 width: '100%',
                 marginTop: '8%',
+                alignItems:'center'
             }}>
                 <Input onChange={setEmail} placeholder='Email' icon={() => (
                     <MaterialIcons name="email" size={24} color="#1C2348" />

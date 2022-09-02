@@ -4,9 +4,12 @@ import { MaterialIcons } from '@expo/vector-icons';
 import icon from '../assets/a.png'
 import Input from './../Components/Input'
 import Button from '../Components/Button';
+import { FontAwesome } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 
-function ForgetPassword(props) {
+function DeviceLogin(props) {
     const [UserName, setUserName] = React.useState(null);
+    const [Keyword, setKeyword] = React.useState(null);
     return (
         <View style={{
 
@@ -33,15 +36,18 @@ function ForgetPassword(props) {
                 marginTop:'8%',
                 alignItems:'center'
             }}>
-                <Input onChange={setUserName} placeholder='Email' icon={() => (
-                    <MaterialIcons name="email" size={24} color="#1C2348" />
+                <Input onChange={setUserName} placeholder='Device id' icon={() => (
+                    <FontAwesome name="user-circle-o" size={30} color="#1C2348" />
                 )} />
-                <Button buttonName='SEND' disable={UserName ? false : true}>
+                <Input onChange={setKeyword} placeholder='Keyword' icon={() => (
+                    <Entypo name="lock" size={30} color="#1C2348" />
+                )} />
+                <Button onPress={() => { props.navigation.navigate('Service Status') }} buttonName='CONTINUE' disable={UserName && Keyword ? false : true}>
                 
                 </Button>
             </View>
             <View style={{
-                marginTop:230,
+                marginTop:30,
             }}>
             <TouchableOpacity onPress={()=>{props.navigation.navigate('Create new account')}} style={{
                     marginTop: 20,
@@ -50,7 +56,7 @@ function ForgetPassword(props) {
                         fontWeight: 'bold',
                         color: '#1C2348',
                     }} >
-                        Create new account
+                       Find your device !
                     </Text>
                 </TouchableOpacity>
             </View>
@@ -59,4 +65,4 @@ function ForgetPassword(props) {
     );
 }
 
-export default ForgetPassword;
+export default DeviceLogin;

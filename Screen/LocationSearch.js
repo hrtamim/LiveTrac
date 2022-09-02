@@ -3,13 +3,12 @@ import { View, TouchableOpacity, Text, TextInput, StyleSheet, ScrollView, Status
 import { Ionicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import FoodCart from '../Components/FoodCart';
-import FoodItem from '../Data/FoodItem.json'
-import Dropdown from '../Components/Dropdown';
+import MapView from 'react-native-maps';
 
-function Search(props) {
 
-    const [Search, setSearch] = React.useState(null);
+function LocationSearch(props) {
+
+    const [LocationSearch, setLocationSearch] = React.useState(null);
     const [Value, setValue] = React.useState(true);
     const navigation = useNavigation()
 
@@ -18,12 +17,17 @@ function Search(props) {
 
 
         }}>
+            
+            
             <View>
                 <View style={{
-                    height: 60,
-                    width: '100%',
-                    backgroundColor:"#fbfbfb",
+                    height: 1,
+                    width: '90%',
+                    backgroundColor:"transparent",
                     flexDirection: 'row',
+                    position:'absolute',
+                    zIndex:150,
+                    
 
 
                 }}>
@@ -32,11 +36,12 @@ function Search(props) {
                         height: 45,
                         alignItems: 'center',
                         marginLeft: 20,
-                        width: '100%',
+                        width: 100,
                         borderColor: '#808080',
                         borderWidth: 1,
                         borderRadius: 25,
                         flexDirection: 'row',
+                        backgroundColor:'white',
                         flex: 4,
                         marginTop: 10,
                     }}>
@@ -46,7 +51,7 @@ function Search(props) {
                             flex: 1,
                             
                         }} name="search" size={24} color='#1C2348' />
-                        <TextInput onFocus={() => setValue(false)} onChange={setSearch} placeholder='Search' style={{
+                        <TextInput onFocus={() => setValue(false)} onChange={setLocationSearch} placeholder='Search' style={{
                             height: 50,
                             borderRadius: 25,
                             width: '70%',
@@ -67,71 +72,30 @@ function Search(props) {
                         </TouchableOpacity>
 
                     </View>
-                    <TouchableOpacity onPress={() => { navigation.goBack() }} style={{
-                        marginTop: 20,
-                        marginLeft: 10,
-                        flex: 1,
-                    }}>
-                        <Text>
-                            Cancel
-                        </Text>
-                    </TouchableOpacity>
+                    
+                    
 
                 </View>
+                
             </View>
-            {
-                Value ? (
-                    <View style={{
-                        marginTop: 10,
-
-                        width: '100%',
-                        marginLeft: 50,
-
-                    }}>
-                        <Text style={{
-                            fontWeight: 'bold',
-                        }}>
-                            Recent Search
-                        </Text>
-                        <View style={{
-                            flexDirection: 'row',
-                        }}>
-                            <Recent title='porota' />
-                            <Recent title='tea' />
-                            <Recent title='bread' />
-                        </View>
-                    </View>
-                ) : (
-                    
-                    <ScrollView>
-                    <Dropdown/>
-                    
-                        {
-                            FoodItem && FoodItem.length > 0 ? (
-                                FoodItem.map((data, i) => (
-                                    <FoodCart key={i} data={data} />
-
-                                ))
-                            ) : (
-                                <Text>no data</Text>
-                            )
-
-                        }
-                        
-                    </ScrollView>
-                )
-            }
+             
+            <MapView style={{
+         height:'100%',
+         width:'100%',
+         }}>
             
+         </MapView>
 
 
 
             <StatusBar barStyle={'dark-content'} backgroundColor={'white'} />
         </View>
+        
 
     );
 }
 
-export default Search;
+export default LocationSearch;
 
 const styles = StyleSheet.create({
     box: {

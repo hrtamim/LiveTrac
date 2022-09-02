@@ -4,17 +4,17 @@ import { TouchableOpacity, Text, SafeAreaView, View, TextInput, } from 'react-na
 function Button(props) {
     return (
         <TouchableOpacity onPress={props.onPress} disabled={props.disable} style={{
-            height: 50,
+            height: 45,
             width: '90%',
             borderColor:'#808080', 
             borderWidth: 1,
             borderRadius:25,
-            margin: 20,
+            
             alignItems: 'center',
             marginTop: 10,
             marginBottom: 10,
             flexDirection: 'row',
-            paddingHorizontal: 15,
+            
             justifyContent:'center',
             backgroundColor:props.disable?'transparent':'#1C2348',
             
