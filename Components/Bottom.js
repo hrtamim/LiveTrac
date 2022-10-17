@@ -23,9 +23,9 @@ function Bottom(props) {
           navigation.navigate("Home Screen");
         }}
         style={{
-          width: window.width / 7,
-          height: window.width / 7,
-          borderRadius: window.width / 14,
+          width: window.width / 7 + 5,
+          height: window.width / 7 + 5,
+          borderRadius: window.width / 14 + 5,
           backgroundColor: "white",
           marginBottom: 30,
           position: "absolute",

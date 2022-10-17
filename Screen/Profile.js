@@ -1,8 +1,16 @@
 import React from "react";
-import { View, Text, TouchableOpacity, ScrollView, Image } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+  Image,
+  Dimensions,
+} from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import ListCart from "../Components/ListCart";
 import { useNavigation } from "@react-navigation/native";
+const { width, height } = Dimensions.get("window");
 
 function Profile() {
   const navigation = useNavigation();
@@ -10,24 +18,24 @@ function Profile() {
     <View style={{ flex: 1 }}>
       <View
         style={{
-          height: 420,
-          width: 420,
+          height: width,
+          width: width,
           backgroundColor: "#01092A",
           position: "absolute",
-          borderRadius: 210,
-          top: -100,
-          left: -100,
+          borderRadius: width / 2,
+          top: -60,
+          left: -60,
         }}
       ></View>
       <View
         style={{
-          height: 420,
-          width: 420,
+          height: width,
+          width: width,
           backgroundColor: "#01092A",
-          borderRadius: 210,
+          borderRadius: width / 2,
           position: "absolute",
-          bottom: -100,
-          right: -100,
+          bottom: -60,
+          right: -60,
         }}
       ></View>
       <View
@@ -39,8 +47,12 @@ function Profile() {
           style={{
             height: 130,
             width: 130,
-            borderRadius: 65,
             marginTop: 80,
+            borderWidth: 1,
+            borderColor: "#e5e5e5",
+            overflow: "hidden",
+            borderRadius: 100,
+            marginBottom: 10,
           }}
         >
           <Image
