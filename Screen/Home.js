@@ -18,7 +18,7 @@ function Home(props) {
         <Tab.Navigator tabBar={(props)=><Bottom {...props}/>}>
         <Tab.Screen options={{header:(props)=><Header {...props} />}} name="Home Screen" component={HomeScreen} />
         <Tab.Screen options={{headerShown:false}} name="Profile" component={Profile} />
-        <Tab.Screen options={{header:(props)=><LocationHeader {...props} />}} name="Location" component={Location} />
+        <Tab.Screen options={{headerShown:false}} name="Location" component={Location} />
         
         
         

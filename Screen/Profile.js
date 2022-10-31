@@ -6,16 +6,18 @@ import {
   ScrollView,
   Image,
   Dimensions,
+  TextInput
 } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import ListCart from "../Components/ListCart";
 import { useNavigation } from "@react-navigation/native";
+import D from "../Components/D";
 const { width, height } = Dimensions.get("window");
 
 function Profile() {
   const navigation = useNavigation();
   return (
-    <View style={{ flex: 1 }}>
+    <ScrollView style={{ flex: 1 }}>
       <View
         style={{
           height: width,
@@ -124,36 +126,32 @@ function Profile() {
           style={{
             height: 400,
             width: "90%",
-            alignItems: "center",
             backgroundColor: "white",
             marginTop: 20,
             borderRadius: 10,
             opacity: 0.8,
+            padding: 10,
           }}
         >
-          <Text
-            style={{
-              fontWeight: "bold",
-              fontSize: 15,
-              marginTop: 10,
-            }}
-          >
-            Order List
-          </Text>
-          <View
-            style={{
-              height: 2,
-              width: "70%",
-              backgroundColor: "black",
-            }}
-          ></View>
-          <ListCart />
-          <ListCart />
-          <ListCart />
-          <ListCart />
+          <Text style={{ fontSize: 16, fontWeight: 'bold' }}>Account</Text>
+          <View style={{ paddingHorizontal: 40 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Text style={{ fontSize: 16 }}>Gender:</Text>
+              <D style={{ width: 150, marginLeft: 10 }} DATA={['Male', 'Female']} />
+            </View>
+            <View style={{ flexDirection: 'row', alignItems: 'center',marginTop:10 }}>
+              <Text style={{ fontSize: 16 }}>Birth Year:</Text>
+              <D style={{ width: 150, marginLeft: 10 }} DATA={['1990', '1991','1992','1993','1994','1995','1996','1997','1998','1999','2000','2001','2002','2003','2003','2004']} />
+            </View>
+            <Text style={{ fontSize: 16,marginTop:10 }}>Address</Text>
+          <TextInput style={{height:100,width:250,borderRadius:20,borderWidth:1,}}>
+
+          </TextInput>
+          </View>
+
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 export default Profile;

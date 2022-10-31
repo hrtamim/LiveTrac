@@ -1,14 +1,10 @@
 import React from 'react';
 import { View,Text , StatusBar} from 'react-native';
-import { ScrollView } from 'react-native';
-import Cart from '../Components/Cart';
-
-import FoodItem from '../Data/FoodItem.json';
-
-
+import MapView from 'react-native-maps';
+import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 
 function HomeScreen(props) {
- 
+    const [Search, setSearch] = React.useState(null);
     const [Data, setData] = React.useState(null);
 
     React.useEffect(()=>{
@@ -16,23 +12,15 @@ function HomeScreen(props) {
 
     },[Data])
     return (
-        <ScrollView style={{
-            padding:10
+        <View style={{
+            height:'100%',
+            
         }}>
-        <StatusBar barStyle={'dark-content'} backgroundColor={"#fbfbfb"}/>
-
-        {
-            FoodItem && FoodItem.length>0?(
-                FoodItem.map((data,i)=>(
-                    <Cart key={i} data={data}/>
-                
-                ))
-            ):(
-<Text>no data</Text>
-            )
-        }
-           
-        </ScrollView>
+        <MapView style={{
+         height:'100%',
+         width:'100%',
+         }}/>
+        </View>
     );
 }
 

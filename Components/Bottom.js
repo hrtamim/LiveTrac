@@ -44,7 +44,7 @@ function Bottom(props) {
           justifyContent: "center",
         }}
       >
-        <MaterialIcons name="home" size={30} color="#1C2348" />
+        <MaterialIcons name="home" size={30} color="#01395E" />
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => {
@@ -62,11 +62,11 @@ function Bottom(props) {
           }}
           name="location"
           size={25}
-          color="#1C2348"
+          color="#01395E"
         />
         <Text
           style={{
-            color: "#1C2348",
+            color: "#01395E",
           }}
         >
           Location

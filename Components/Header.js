@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native'
+import { View,StatusBar } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';
 import Input from './../Components/Input';
 
@@ -8,9 +8,11 @@ function Header(props) {
     return (
         <View style={[{
             height: 60,
-            backgroundColor: "#fbfbfb",
             alignItems: 'center',
+            marginTop:30,   
+        
         },props.style]}>
+       <StatusBar backgroundColor="#01395E" barStyle="light-content" />
             <View style={{
                 height:20,
                 width: '90%',

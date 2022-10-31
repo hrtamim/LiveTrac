@@ -15,9 +15,10 @@ function Search(props) {
 
     return (
         <View style={{
-
+marginTop:30
 
         }}>
+        <StatusBar backgroundColor="#01395E" barStyle='light-content'/>
             <View>
                 <View style={{
                     height: 60,
