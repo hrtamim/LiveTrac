@@ -159,7 +159,6 @@ const D = ({ style, value, onChange, placeholder, DATA, error, visible, message 
                                     <Text style={{
                                         margin: 10,
                                         fontSize: 15,
-
                                     }}>{message ? message : 'Something went wrong'}</Text>
                                 )}
                             </ScrollView>

@@ -60,7 +60,8 @@ function Location(props) {
                         'Kolkata'
                     ]} />
                 </View>
-                <D style={{ width: '100%' }} placeholder='Select Train' DATA={['Subarna Express',
+                <D style={{ width: '100%' }} placeholder='Select Train' DATA={[
+                    'Subarna Express',
                     'Mohanagar Goduli',
                     'Mohanagar Provati',
                     'Ekota Express',
