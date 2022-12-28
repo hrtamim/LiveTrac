@@ -1,7 +1,8 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Dimensions, Text, View } from 'react-native';
 import D from '../Components/D';
 import Button from '../Components/Button'
+const {width,height}=Dimensions.get("window")
 function Location(props) {
     return (
         <View style={{
@@ -11,10 +12,11 @@ function Location(props) {
             justifyContent:'center'
 
         }}>
-            <View >
-                <D style={{ width: '100%' }} placeholder='Train Type' DATA={['Intner City', 'Mail']} />
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: 10 }}>
-                    <D style={{ width: 150 }} placeholder='From' DATA={['Dhaka',
+            <View>
+                <D style={{ width: width-100,
+                marginVertical:5 }} placeholder='Train Type' DATA={['Intner City', 'Mail']} />
+                <D style={{ width: width-100,
+                marginVertical:5 }} placeholder='Select Station' DATA={['Dhaka',
                         'Chittagong',
                         'Dinajpur',
                         'Dewangong',
@@ -38,29 +40,8 @@ function Location(props) {
 
 
                     ]} />
-                    <D style={{ width: 150 }} placeholder='To' DATA={['Dhaka',
-                        'Chittagong',
-                        'Dinajpur',
-                        'Dewangong',
-                        'Sylhet',
-                        'Noakhali',
-                        'Kisoregonj',
-                        'BB_East',
-                        'Lalmonirhat',
-                        'Santahar',
-                        'Rangpur',
-                        'Ishurdi',
-                        'Mohangonj',
-                        'Khulna',
-                        'Rajshahi',
-                        'Saidpur',
-                        'Chilahati',
-                        'Goalonda hat',
-                        'Dhaka Cantt',
-                        'Kolkata'
-                    ]} />
-                </View>
-                <D style={{ width: '100%' }} placeholder='Select Train' DATA={[
+                <D style={{ width: width-100,
+                marginVertical:5 }} placeholder='Select Train' DATA={[
                     'Subarna Express',
                     'Mohanagar Goduli',
                     'Mohanagar Provati',

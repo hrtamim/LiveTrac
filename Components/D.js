@@ -35,6 +35,7 @@ const D = ({ style, value, onChange, placeholder, DATA, error, visible, message 
     const styles = StyleSheet.create({
         viewBox: {
             minWidth: 100,
+            backgroundColor:"white"
         },
         input: {
             borderRadius: 5,
@@ -115,6 +116,7 @@ const D = ({ style, value, onChange, placeholder, DATA, error, visible, message 
                             flex: 1,
                             justifyContent: "center",
                             alignItems: "center",
+                            
                         }}
                     >
                         <Animated.View
@@ -123,7 +125,7 @@ const D = ({ style, value, onChange, placeholder, DATA, error, visible, message 
                             style={{
                                 maxHeight: 320,
                                 width: "90%",
-
+                                backgroundColor:"white",
                                 borderRadius: 5,
                             }}
                         >

@@ -13,6 +13,7 @@ import LocationSearch from "./Screen/LocationSearch";
 import EditPtofile from "./Screen/EditProfile";
 import DeviceLogin from "./Screen/DeviceLogin";
 import ServiceStatus from "./Screen/ServiceStatus";
+import AdminHome from "./Screen/AdminHome";
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -73,8 +74,8 @@ export default function App() {
           />
           <Stack.Screen
             options={{ headerShown: false }}
-            name="Service Status"
-            component={ServiceStatus}
+            name="AdminHome"
+            component={AdminHome}
           />
         </Stack.Navigator>
       </NavigationContainer>

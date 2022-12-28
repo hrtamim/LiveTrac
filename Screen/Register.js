@@ -42,9 +42,9 @@ function Register(props) {
                     <MaterialIcons name="email" size={24} color="#1C2348" />
 
                 )} />
-                <Input onChange={setUserName} placeholder='User name' icon={() => (
+                {/* <Input onChange={setUserName} placeholder='User name' icon={() => (
                     <FontAwesome name="user-circle-o" size={30} color="#1C2348" />
-                )} />
+                )} /> */}
                 <Input onChange={setPassword} placeholder='Password' icon={() => (
                     <Entypo name="lock" size={30} color="#1C2348" />
                 )} />

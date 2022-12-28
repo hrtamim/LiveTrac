@@ -1,5 +1,15 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, ScrollView, Image, Dimensions, TextInput, Switch, StyleSheet, } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+  Image,
+  Dimensions,
+  TextInput,
+  Switch,
+  StyleSheet,
+} from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import D from "../Components/D";
@@ -7,25 +17,19 @@ const { width, height } = Dimensions.get("window");
 
 function Profile() {
   const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
 
   const navigation = useNavigation();
   return (
-    <View style={{ flex: 1 }}>
-      <View
-        style={art.circle}
-      ></View>
-      <View
-        style={art.circle}
-      ></View>
+    <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
+      <View style={art.circle}></View>
+
       <View
         style={{
           alignItems: "center",
         }}
       >
-        <View
-          style={art.iCircle}
-        >
+        <View style={art.iCircle}>
           <Image
             style={art.pImage}
             source={{
@@ -68,55 +72,102 @@ function Profile() {
               </Text>
             </View>
           </View>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate("Edit Profile");
-            }}
-            style={{
-              marginTop: 15,
-              marginLeft: 5,
-            }}
-          >
-            <Entypo
-              style={{
-                marginTop: 5,
-              }}
-              name="edit"
-              size={20}
-              color="#fff"
-            />
-          </TouchableOpacity>
         </View>
-        <ScrollView showsVerticalScrollIndicator={false} style={art.pCart}>
+        <View showsVerticalScrollIndicator={false} style={art.pCart}>
           <Text style={art.bText}>Account</Text>
-          <View style={{ paddingHorizontal: 40 }}>
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <View style={{ paddingHorizontal: 10, paddingVertical: 15 }}>
+            <View style={{}}>
               <Text style={{ fontSize: 16 }}>Gender:</Text>
-              <D style={{ width: 150, marginLeft: 10 }} DATA={['Male', 'Female']} />
+              <D
+                style={{ width: width - 100, marginVertical: 10 }}
+                DATA={["Male", "Female"]}
+              />
             </View>
-            <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10 }}>
+            <View style={{ marginVertical: 10 }}>
               <Text style={{ fontSize: 16 }}>Birth Year:</Text>
-              <D style={{ width: 150, marginLeft: 10 }} DATA={['1990', '1991', '1992', '1993', '1994', '1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2003', '2004']} />
+              <View
+                style={{
+                  width: width - 100,
+                  flexDirection:"row",
+                  flexWrap:"wrap"
+                }}
+              >
+                <D
+                  placeholder={"Year"}
+                  style={{ marginVertical: 10 }}
+                  DATA={[
+                    "1990",
+                    "1991",
+                    "1992",
+                    "1993",
+                    "1994",
+                    "1995",
+                    "1996",
+                    "1997",
+                    "1998",
+                    "1999",
+                    "2000",
+                    "2001",
+                    "2002",
+                    "2003",
+                    "2003",
+                    "2004",
+                  ]}
+                />
+                <View style={{width:20}}/>
+                <D
+                  placeholder={"Month"}
+                  style={{ marginVertical: 10, }}
+                  DATA={[
+                    "1990",
+                    "1991",
+                    "1992",
+                    "1993",
+                    "1994",
+                    "1995",
+                    "1996",
+                    "1997",
+                    "1998",
+                    "1999",
+                    "2000",
+                    "2001",
+                    "2002",
+                    "2003",
+                    "2003",
+                    "2004",
+                  ]}
+                />
+                <View style={{width:20}}/>
+                <D
+                  placeholder={"Date"}
+                  style={{marginVertical: 10 }}
+                  DATA={[
+                    "1990",
+                    "1991",
+                    "1992",
+                    "1993",
+                    "1994",
+                    "1995",
+                    "1996",
+                    "1997",
+                    "1998",
+                    "1999",
+                    "2000",
+                    "2001",
+                    "2002",
+                    "2003",
+                    "2003",
+                    "2004",
+                  ]}
+                />
+              </View>
             </View>
-            <Text style={{ fontSize: 16, marginTop: 10 }}>Address</Text>
-
+            <Text style={{ fontSize: 16 }}>Address</Text>
+            <TextInput placeholder="Address" style={art.tInput} />
           </View>
-          <TextInput style={art.tInput}/>
 
-          
-          <Text style={art.bText}>Settings</Text>
-          <View style={art.toogle}>
-            <Text>বাংলা</Text>
-            <Switch
-              trackColor={{ false: "#767577", true: "#408F04" }}
-              thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
-              ios_backgroundColor="#3e3e3e"
-              onValueChange={toggleSwitch}
-              value={isEnabled}
-            />
-          </View>
           <Text style={art.bText}>Help & Legal</Text>
-          <View style={{ marginLeft: 40, }}>
+          <View style={{ marginLeft: 0 }}>
             <TouchableOpacity style={art.touch}>
               <Text>Emergency Support</Text>
             </TouchableOpacity>
@@ -127,31 +178,25 @@ function Profile() {
               <Text>Policies</Text>
             </TouchableOpacity>
           </View>
-          <Text style={art.bText}>More</Text>
-          <View style={{ paddingHorizontal: 40 }}>
-
-          </View>
-
-        </ScrollView>
-
+        </View>
       </View>
-    </View>
+      <View style={{
+        height:40
+      }}/>
+    </ScrollView>
   );
 }
 export default Profile;
 
 const art = StyleSheet.create({
   touch: {
-    height:40,
-    backgroundColor: 'red',
-    width: '100%',
-    justifyContent: 'center',
+    height: 40,
+    justifyContent: "center",
     paddingHorizontal: 10,
     borderRadius: 10,
-    marginTop: 5,
+    marginVertical: 5,
   },
   pCart: {
-    height: 400,
     width: "90%",
     backgroundColor: "white",
     marginTop: 20,
@@ -161,29 +206,30 @@ const art = StyleSheet.create({
     paddingBottom: 20,
   },
   tInput: {
-    height: 100,
-    width: '87%',
-   padding:10,
-    borderRadius: 20,
+    width: "87%",
+    padding: 10,
+    borderRadius: 5,
     borderWidth: 1,
-    backgroundColor: '#fff',
-    marginLeft: 40
+    backgroundColor: "#fff",
+    marginVertical: 10,
+    borderColor: "#e5e5e5",
+    width: width - 100,
+    minHeight: 45,
   },
   toogle: {
-    borderRadius:10,
-    flexDirection: 'row',
+    borderRadius: 10,
+    flexDirection: "row",
     height: 40,
-    width: '100%',
-    backgroundColor: '#fff ',
-    justifyContent: 'space-between',
+    width: "100%",
+    backgroundColor: "#fff ",
+    justifyContent: "space-between",
     paddingHorizontal: 10,
-    alignItems: 'center',
+    alignItems: "center",
     marginVertical: 10,
-    borderWidth:1,
-    borderColor:'#808080',
-  
+    borderWidth: 1,
+    borderColor: "#808080",
   },
-  circle:{
+  circle: {
     height: width,
     width: width,
     backgroundColor: "#01092A",
@@ -192,7 +238,16 @@ const art = StyleSheet.create({
     top: -60,
     left: -60,
   },
-  iCircle:{
+  circle2: {
+    height: width,
+    width: width,
+    backgroundColor: "#01092A",
+    position: "absolute",
+    borderRadius: width / 2,
+    top: 0,
+    left: 0,
+  },
+  iCircle: {
     height: 130,
     width: 130,
     marginTop: 80,
@@ -202,14 +257,13 @@ const art = StyleSheet.create({
     borderRadius: 100,
     marginBottom: 10,
   },
-  pImage:{
+  pImage: {
     height: 130,
     width: 130,
     borderRadius: 65,
   },
-  bText:
-  { 
-    fontSize: 16, 
-    fontWeight: 'bold' 
+  bText: {
+    fontSize: 16,
+    fontWeight: "bold",
   },
-})
+});

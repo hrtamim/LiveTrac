@@ -42,21 +42,24 @@ function DeviceLogin(props) {
                 <Input onChange={setKeyword} placeholder='Keyword' icon={() => (
                     <Entypo name="lock" size={30} color="#1C2348" />
                 )} />
-                <Button onPress={() => { props.navigation.navigate('Service Status') }} buttonName='CONTINUE' disable={UserName && Keyword ? false : true}>
+                <Button onPress={() => { props.navigation.navigate('AdminHome') }} buttonName='CONTINUE' disable={UserName && Keyword ? false : true}>
                 
                 </Button>
             </View>
             <View style={{
-                marginTop:30,
+                marginTop:10,
+                justifyContent:"center",
+                alignItems:"center"
             }}>
-            <TouchableOpacity onPress={()=>{props.navigation.navigate('Create new account')}} style={{
+            
+                <TouchableOpacity onPress={()=>{props.navigation.goBack()}} style={{
                     marginTop: 20,
                 }}>
                     <Text style={{
                         fontWeight: 'bold',
                         color: '#1C2348',
                     }} >
-                       Find your device !
+                       Back
                     </Text>
                 </TouchableOpacity>
             </View>

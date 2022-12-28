@@ -17,7 +17,7 @@ import Profile from "./Profile";
 import Location from "./Location";
 import LocationHeader from "../Components/LocationHeader";
 
-function Home(props) {
+function AdminHome(props) {
   const navigation = props.navigation;
   return (
     <Tab.Navigator tabBar={(props) => <Bottom {...props} />}>
@@ -40,4 +40,4 @@ function Home(props) {
   );
 }
 
-export default Home;
+export default AdminHome;
