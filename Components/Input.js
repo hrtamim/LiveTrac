@@ -32,10 +32,12 @@ function Input(props) {
             }}>
 
             </TextInput>
-            <props.icon style={{
-                margin: 5,
-                flex:1,
-            }}/>
+            {props.icon&&(
+                <props.icon style={{
+                    margin: 5,
+                    flex:1,
+                }}/>
+            )}
         </View>
     );
 }

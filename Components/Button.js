@@ -3,7 +3,7 @@ import { TouchableOpacity, Text, SafeAreaView, View, TextInput, } from 'react-na
 
 function Button(props) {
     return (
-        <TouchableOpacity onPress={props.onPress} disabled={props.disable} style={{
+        <TouchableOpacity onPress={props.onPress} disabled={props.disable} style={[{
             height: 45,
             width: '90%',
             borderColor:'#808080', 
@@ -19,7 +19,7 @@ function Button(props) {
             backgroundColor:props.disable?'transparent':'#1C2348',
             
             
-        }}>
+        },props.style]}>
         <Text style={{
             color:!props.disable?'white':'#1C2348',
             fontWeight:'bold',
