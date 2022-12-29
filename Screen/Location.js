@@ -16,6 +16,29 @@ function Location(props) {
                 <D style={{ width: width-100,
                 marginVertical:5 }} placeholder='Train Type' DATA={['Intner City', 'Mail']} />
                 <D style={{ width: width-100,
+                marginVertical:5 }} placeholder='Select Train' DATA={[
+                    'Subarna Express',
+                    'Mohanagar Goduli',
+                    'Mohanagar Provati',
+                    'Ekota Express',
+                    'Tista Express',
+                    'Parabat  Express',
+                    'Upukol Express',
+                    'Joyantika Express',
+                    'Paharia Express',
+                    'Mohanagar Provati',
+                    'Mohanagar Goduli',
+                    'Uddayan Express',
+                    'Megna Express',
+                    'Agnibina Express',
+                    'Egarosindhur Provati',
+                    'Upaban Express',
+                    'Turna Express',
+                    'Bharamaputra',
+                    'Jamuna Express',
+                    'Egarosindhur Goduli',
+                ]} />
+                <D style={{ width: width-100,
                 marginVertical:5 }} placeholder='Select Station' DATA={['Dhaka',
                         'Chittagong',
                         'Dinajpur',
@@ -40,30 +63,6 @@ function Location(props) {
 
 
                     ]} />
-                <D style={{ width: width-100,
-                marginVertical:5 }} placeholder='Select Train' DATA={[
-                    'Subarna Express',
-                    'Mohanagar Goduli',
-                    'Mohanagar Provati',
-                    'Ekota Express',
-                    'Tista Express',
-                    'Parabat  Express',
-                    'Upukol Express',
-                    'Joyantika Express',
-                    'Paharia Express',
-                    'Mohanagar Provati',
-                    'Mohanagar Goduli',
-                    'Uddayan Express',
-                    'Megna Express',
-                    'Agnibina Express',
-                    'Egarosindhur Provati',
-                    'Upaban Express',
-                    'Turna Express',
-                    'Bharamaputra',
-                    'Jamuna Express',
-                    'Egarosindhur Goduli',
-                ]} />
-
             </View>
             <Button buttonName='NEXT' />
         </View>

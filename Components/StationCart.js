@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Alert } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export default function StationCart({ title, address, onDelete }) {
@@ -33,7 +33,16 @@ export default function StationCart({ title, address, onDelete }) {
           {address}
         </Text>
       </View>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={()=>{
+        Alert.alert("Hey!","Are you sure to delete this?",[
+          {
+            text: "Cancel",
+            onPress: () => console.log("Cancel Pressed"),
+            style: "cancel"
+          },
+          { text: "OK", onPress: () => console.log("OK Pressed") }
+        ])
+      }}>
         <MaterialCommunityIcons name="delete-sweep" size={24} color="black" />
       </TouchableOpacity>
     </View>

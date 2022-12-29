@@ -21,7 +21,7 @@ function Input(props) {
         
         }}>
 
-            <TextInput onFocus={props.onFocus?props.onFocus:()=>{
+            <TextInput value={props.value} onFocus={props.onFocus?props.onFocus:()=>{
                 console.log('press')
             }} onChangeText={props.onChange} placeholder={props.placeholder}
             style= {{
