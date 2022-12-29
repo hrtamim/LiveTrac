@@ -88,7 +88,7 @@ function Bottom(props) {
           }}
           name="user"
           size={25}
-          color="#1C2348"
+          color="#01395E"
         />
         <Text
           style={{

@@ -59,7 +59,7 @@ function Bottom(props) {
       >
         <MaterialCommunityIcons style={{
             marginTop: 10,
-          }}  name="clipboard-list" size={25} color="black" />
+          }}  name="clipboard-list" size={25} color="#01395E" />
         
         <Text
           style={{
@@ -85,7 +85,7 @@ function Bottom(props) {
           }}
           name="user"
           size={25}
-          color="#1C2348"
+          color="#01395E"
         />
         <Text
           style={{

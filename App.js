@@ -1,5 +1,5 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, ScrollView, SafeAreaView } from "react-native";
+
+import { StyleSheet, Text, View, ScrollView, SafeAreaView ,StatusBar} from "react-native";
 import LogIn from "./Screen/Login";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -19,7 +19,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <StatusBar barStyle="auto" />
+      <StatusBar backgroundColor={"white"} barStyle="dark-content" />
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen

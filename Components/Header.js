@@ -20,7 +20,7 @@ function Header(props) {
           props.style,
         ]}
       >
-        <StatusBar backgroundColor="#01395E" barStyle="light-content" />
+       
         <View
           style={{
             height: 20,
