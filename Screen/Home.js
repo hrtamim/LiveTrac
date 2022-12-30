@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import {
   TouchableOpacity,
   Text,
@@ -16,9 +16,39 @@ import Bottom from "../Components/Bottom";
 import Profile from "./Profile";
 import Location from "./Location";
 import LocationHeader from "../Components/LocationHeader";
+import * as Locations from 'expo-location';
+import { useDispatch } from "react-redux";
+import { setCurrentLocation } from "../Redux/currentLocation";
 
-function Home(props) {
-  const navigation = props.navigation;
+function Home({navigation,route}) {
+  //const navigation = props.navigation;
+  const params=route.params;
+  const user=params.user;
+  const [location, setLocation] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
+  const dispatch=useDispatch()
+
+  useEffect(() => {
+    (async () => {
+      
+      let { status } = await Locations.requestForegroundPermissionsAsync();
+      if (status !== 'granted') {
+        setErrorMsg('Permission to access location was denied');
+        return;
+      }
+
+      setInterval(()=>{
+        getLocation()
+      },1000)
+      
+    })();
+  }, []);
+
+  const getLocation=async()=>{
+    let location = await Locations.getCurrentPositionAsync({});
+    dispatch(setCurrentLocation(location))
+    setLocation(location);
+  }
   return (
     <Tab.Navigator tabBar={(props) => <Bottom {...props} />}>
       <Tab.Screen

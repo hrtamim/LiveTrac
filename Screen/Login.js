@@ -4,7 +4,7 @@ import {
     Image, ScrollView, View, Dimensions, Modal
 } from 'react-native'
 import Input from './../Components/Input'
-import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesome, MaterialIcons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import icon from '../assets/a.png';
 import Button from '../Components/Button';
@@ -39,8 +39,8 @@ function LogIn(props) {
                         width: 80,
                     }} source={icon} />
                 </View>
-                <Input onChange={setUserName} placeholder='User name' icon={() => (
-                    <FontAwesome name="user-circle-o" size={25} color="#1C2348" />
+                <Input onChange={setUserName} placeholder='Email' icon={() => (
+                    <MaterialIcons name="email" size={24} color="#1C2348" />
                 )} />
                 <Input onChange={setPassword} placeholder='Password' icon={() => (
                     <Entypo name="lock" size={25} color="#1C2348" />
