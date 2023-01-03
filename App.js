@@ -28,14 +28,14 @@ import {app} from "./firebase"
 
 const Stack = createNativeStackNavigator();
 export default function App() {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(true);
   const auth=getAuth(app)
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        setUser(user);
+        //setUser(user);
       } else {
-        setUser(null);
+        //setUser(null);
       }
     });
   }, []);
