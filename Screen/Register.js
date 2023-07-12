@@ -44,8 +44,9 @@ function Register(props) {
         const errorCode = error.code;
         const errorMessage = error.message;
         // ..
+        Alert.alert("Ops!",errorCode)
         setLoader(false);
-        console.warn(errorMessage);
+        console.warn(errorCode);
       });
   };
   const getUserInfo = (id) => {};
@@ -93,7 +94,7 @@ function Register(props) {
             alignItems: "center",
           }}
         >
-          <Input
+          <Input value={UserEmail}
             onChange={setEmail}
             placeholder="Email"
             icon={() => (
@@ -103,7 +104,7 @@ function Register(props) {
           {/* <Input onChange={setUserName} placeholder='User name' icon={() => (
                     <FontAwesome name="user-circle-o" size={30} color="#1C2348" />
                 )} /> */}
-          <Input
+          <Input value={Password}
             onChange={setPassword}
             placeholder="Password"
             icon={() => <Entypo name="lock" size={30} color="#1C2348" />}

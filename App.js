@@ -28,14 +28,19 @@ import {app} from "./firebase"
 
 const Stack = createNativeStackNavigator();
 export default function App() {
-  const [user, setUser] = useState(true);
+  const [user, setUser] = useState(false);
+  const [loader,setLoader]=useState(false)
   const auth=getAuth(app)
   useEffect(() => {
+    setLoader(true)
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        //setUser(user);
+        setLoader(false)
+        setUser(user);
+
       } else {
-        //setUser(null);
+        setLoader(false)
+        setUser(null);
       }
     });
   }, []);
@@ -90,7 +95,7 @@ export default function App() {
               component={OrderConfirmation}
             />
             <Stack.Screen
-              options={{ headerShown: false }}
+              
               name="LocationSearch"
               component={LocationSearch}
             />

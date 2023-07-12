@@ -14,12 +14,50 @@ import { Entypo } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import D from "../Components/D";
 const { width, height } = Dimensions.get("window");
+import i from "../assets/i.jpg";
+import { useEffect } from "react";
+import { getDatabase, ref, onValue, set } from "firebase/database";
+import { database } from "../firebase";
 
-function Profile() {
+function Profile({ route }) {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
-
+  const params = route.params;
+  const user = params.user;
   const navigation = useNavigation();
+  const date = new Date();
+  const [year, setYear] = useState();
+  const [month, setMonth] = useState();
+  const [day, setDay] = useState();
+  const [gender, setGender] = useState();
+  const [address, setAddress] = useState();
+  const [name, setName] = useState("Live Track");
+  const starCountRef = ref(database, `users/${user?.uid}`);
+
+  
+  useEffect(() => {
+    set(starCountRef, {
+      name: name ? name : " ",
+      gender: gender ? gender : "Male",
+      month: month ? month : "10",
+      year: year ? year : "2002",
+      day: day ? day : "10",
+      address:address?address:" "
+    });
+  }, [gender, address, day, month, year]);
+  useEffect(() => {
+    onValue(starCountRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        setName(data?.name);
+        setGender(data?.gender);
+        setDay(data?.day);
+        setMonth(data?.month);
+        setYear(data?.year);
+      }
+    });
+  }, []);
+
   return (
     <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
       <View style={art.circle}></View>
@@ -27,48 +65,44 @@ function Profile() {
       <View
         style={{
           alignItems: "center",
-        }}
-      >
+        }}>
         <View style={art.iCircle}>
-          <Image
-            style={art.pImage}
-            source={{
-              uri: "https://i.pinimg.com/170x/6b/85/fb/6b85fb3448ce23c2d48c3ea0924628bf.jpg",
-            }}
-          />
+          <Image style={art.pImage} source={i} />
         </View>
         <View
           style={{
             flexDirection: "row",
-          }}
-        >
+          }}>
           <View
             style={{
               marginLeft: 20,
-            }}
-          >
+            }}>
             <View
               style={{
                 marginTop: 5,
-              }}
-            >
-              <Text
-                style={{
-                  fontWeight: "bold",
-                  color: "#fff",
+              }}>
+              <TextInput
+                value={name}
+                onChangeText={setName}
+                onEndEditing={e=>{
+                  setName(e.nativeEvent.text)
                 }}
-              >
-                Mowmita Rahman
-              </Text>
+                placeholder="Address"
+                style={{
+                  color: "white",
+                  fontSize: 16,
+                  fontWeight: "700",
+                  textAlign: "center",
+                }}
+              />
             </View>
 
             <View style={{}}>
               <Text
                 style={{
                   color: "#fff",
-                }}
-              >
-                +8801761143991
+                }}>
+                {user?.email}
               </Text>
             </View>
           </View>
@@ -79,6 +113,7 @@ function Profile() {
             <View style={{}}>
               <Text style={{ fontSize: 16 }}>Gender:</Text>
               <D
+                onChange={setGender}
                 style={{ width: width - 100, marginVertical: 10 }}
                 DATA={["Male", "Female"]}
               />
@@ -88,10 +123,9 @@ function Profile() {
               <View
                 style={{
                   width: width - 100,
-                  flexDirection:"row",
-                  flexWrap:"wrap"
-                }}
-              >
+                  flexDirection: "row",
+                  flexWrap: "wrap",
+                }}>
                 <D
                   placeholder={"Year"}
                   style={{ marginVertical: 10 }}
@@ -113,57 +147,78 @@ function Profile() {
                     "2003",
                     "2004",
                   ]}
+                  onChange={setYear}
                 />
-                <View style={{width:20}}/>
+                <View style={{ width: 20 }} />
                 <D
                   placeholder={"Month"}
-                  style={{ marginVertical: 10, }}
+                  style={{ marginVertical: 10 }}
+                  onChange={setMonth}
                   DATA={[
-                    "1990",
-                    "1991",
-                    "1992",
-                    "1993",
-                    "1994",
-                    "1995",
-                    "1996",
-                    "1997",
-                    "1998",
-                    "1999",
-                    "2000",
-                    "2001",
-                    "2002",
-                    "2003",
-                    "2003",
-                    "2004",
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "9",
+                    "10",
+                    "11",
+                    "12",
                   ]}
                 />
-                <View style={{width:20}}/>
+                <View style={{ width: 20 }} />
                 <D
                   placeholder={"Date"}
-                  style={{marginVertical: 10 }}
+                  onChange={setDay}
+                  style={{ marginVertical: 10 }}
                   DATA={[
-                    "1990",
-                    "1991",
-                    "1992",
-                    "1993",
-                    "1994",
-                    "1995",
-                    "1996",
-                    "1997",
-                    "1998",
-                    "1999",
-                    "2000",
-                    "2001",
-                    "2002",
-                    "2003",
-                    "2003",
-                    "2004",
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "9",
+                    "10",
+                    "11",
+                    "12",
+                    "13",
+                    "14",
+                    "15",
+                    "16",
+                    "17",
+                    "18",
+                    "19",
+                    "20",
+                    "21",
+                    "22",
+                    "23",
+                    "24",
+                    "25",
+                    "26",
+                    "27",
+                    "28",
+                    "29",
+                    "30",
                   ]}
                 />
               </View>
             </View>
             <Text style={{ fontSize: 16 }}>Address</Text>
-            <TextInput placeholder="Address" style={art.tInput} />
+            <TextInput
+              value={address}
+              onChangeText={setAddress}
+              onEndEditing={e=>{
+                setAddress(e.nativeEvent.text)
+              }}
+              placeholder="Address"
+              style={art.tInput}
+            />
           </View>
 
           <Text style={art.bText}>Help & Legal</Text>
@@ -180,9 +235,11 @@ function Profile() {
           </View>
         </View>
       </View>
-      <View style={{
-        height:40
-      }}/>
+      <View
+        style={{
+          height: 40,
+        }}
+      />
     </ScrollView>
   );
 }

@@ -48,6 +48,7 @@ function Home({navigation,route}) {
     let location = await Locations.getCurrentPositionAsync({});
     dispatch(setCurrentLocation(location))
     setLocation(location);
+    console.log(location)
   }
   return (
     <Tab.Navigator tabBar={(props) => <Bottom {...props} />}>
@@ -56,7 +57,8 @@ function Home({navigation,route}) {
         name="Home Screen"
         component={HomeScreen}
       />
-      <Tab.Screen
+      <Tab.Screen 
+      initialParams={{user:user}}
         options={{ headerShown: false }}
         name="Profile"
         component={Profile}

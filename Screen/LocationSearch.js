@@ -1,131 +1,92 @@
-import React from 'react';
-import { View, TouchableOpacity, Text, TextInput, StyleSheet, ScrollView, StatusBar } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { Entypo } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
-import MapView from 'react-native-maps';
-
+import React from "react";
+import {
+  View,
+  TouchableOpacity,
+  Text,
+  TextInput,
+  StyleSheet,
+  ScrollView,
+  StatusBar,
+} from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
+import MapView,{Marker} from "react-native-maps";
+import { useSelector } from "react-redux";
+import ActivityLoader from "../Components/ActivityLoader";
 
 function LocationSearch(props) {
+  const [LocationSearch, setLocationSearch] = React.useState(null);
+  const [Value, setValue] = React.useState(true);
+  const navigation = useNavigation();
+  const currentLocation = useSelector((state) => state.currentLocation);
 
-    const [LocationSearch, setLocationSearch] = React.useState(null);
-    const [Value, setValue] = React.useState(true);
-    const navigation = useNavigation()
-
-    return (
-        <View style={{
-
-
+  if(!currentLocation){
+    return <ActivityLoader/>
+  }
+  return (
+    <View style={{ flex: 1 }}>
+      {/* <View >
+        <Text
+          style={{
+            fontSize: 20,
+            marginHorizontal: 20,
+            marginTop: 10,
+          }}>
+          Ekota Express
+        </Text>
+        <Text
+          style={{
+            fontSize: 16,
+            marginTop: 5,
+            marginHorizontal: 20,
+          }}>
+          Current Station:{" "}
+        </Text>
+      </View> */}
+      <MapView
+        region={currentLocation.coords}
+        style={{
+          flex: 1,
         }}>
-            
-            
-            <View>
-                <View style={{
-                    height: 1,
-                    width: '90%',
-                    backgroundColor:"transparent",
-                    flexDirection: 'row',
-                    position:'absolute',
-                    zIndex:150,
-                    
+            <Marker
+          coordinate={{ latitude: currentLocation.coords.latitude, longitude: currentLocation.coords.longitude }}
+          
+        />
+        </MapView>
 
-
-                }}>
-                    
-                    <View style={{
-                        height: 45,
-                        alignItems: 'center',
-                        marginLeft: 20,
-                        width: 100,
-                        borderColor: '#808080',
-                        borderWidth: 1,
-                        borderRadius: 25,
-                        flexDirection: 'row',
-                        backgroundColor:'white',
-                        flex: 4,
-                        marginTop: 10,
-                    }}>
-                        <Ionicons style={{
-                            marginLeft: 10,
-                          
-                            flex: 1,
-                            
-                        }} name="search" size={24} color='#1C2348' />
-                        <TextInput onFocus={() => setValue(false)} onChange={setLocationSearch} placeholder='Search' style={{
-                            height: 50,
-                            borderRadius: 25,
-                            width: '70%',
-                            flex: 4,
-                            padding: 10,
-
-
-
-                        }}>
-
-                        </TextInput>
-                        <TouchableOpacity style={{
-                            flex: 1,
-                            marginLeft: '10%'
-
-                        }}>
-                            <Entypo name="circle-with-cross" size={24} color='#1C2348' />
-                        </TouchableOpacity>
-
-                    </View>
-                    
-                    
-
-                </View>
-                
-            </View>
-             
-            <MapView style={{
-         height:'100%',
-         width:'100%',
-         }}>
-            
-         </MapView>
-
-
-
-            <StatusBar barStyle={'dark-content'} backgroundColor={'white'} />
-        </View>
-        
-
-    );
+      <StatusBar barStyle={"dark-content"} backgroundColor={"white"} />
+    </View>
+  );
 }
 
 export default LocationSearch;
 
 const styles = StyleSheet.create({
-    box: {
-        borderWidth: 1,
-        borderColor: '#808080',
-        marginLeft: 10,
-        borderRadius: 25,
-
-    }
-
-})
-
+  box: {
+    borderWidth: 1,
+    borderColor: "#808080",
+    marginLeft: 10,
+    borderRadius: 25,
+  },
+});
 
 function Recent(props) {
-    return (
-        <TouchableOpacity style={{
-
-            flexDirection: 'row',
-            margin: 5,
-        }}>
-            <View style={styles.box}>
-                <Text style={{
-                    padding: 5,
-                    color: '#808080',
-                }}>
-                    {props.title}
-                </Text>
-            </View>
-
-        </TouchableOpacity>
-    );
+  return (
+    <TouchableOpacity
+      style={{
+        flexDirection: "row",
+        margin: 5,
+      }}>
+      <View style={styles.box}>
+        <Text
+          style={{
+            padding: 5,
+            color: "#808080",
+          }}>
+          {props.title}
+        </Text>
+      </View>
+    </TouchableOpacity>
+  );
 }
-

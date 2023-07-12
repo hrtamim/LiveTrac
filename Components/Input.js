@@ -21,7 +21,7 @@ function Input(props) {
         
         }}>
 
-            <TextInput value={props.value} onFocus={props.onFocus?props.onFocus:()=>{
+            <TextInput onEndEditing={props?.onEndEditing} value={props?.value} onFocus={props.onFocus?props.onFocus:()=>{
                 console.log('press')
             }} onChangeText={props.onChange} placeholder={props.placeholder}
             style= {{

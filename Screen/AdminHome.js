@@ -24,6 +24,8 @@ import CommonHeader from "../Components/CommonHeader";
 
 function AdminHome(props) {
   const navigation = props.navigation;
+  const data=props?.route?.params?.data;
+
   return (
     <Tab.Navigator tabBar={(props) => <AdminBottom {...props} />}>
       <Tab.Screen
@@ -34,11 +36,13 @@ function AdminHome(props) {
       <Tab.Screen
         options={{ header: (props) => <CommonHeader title={"Admin Profile"} {...props} /> }}
         name="AdminProfile"
+        initialParams={{data:data}}
         component={AdminProfile}
       />
       <Tab.Screen
         options={{ header: (props) => <CommonHeader title={"Station List"} {...props} /> }}
         name="StationList"
+        initialParams={{data:data}}
         component={StationList}
       />
     </Tab.Navigator>

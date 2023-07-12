@@ -6,14 +6,44 @@ import {
   SafeAreaView,
   View,
   TextInput,
+  Alert,
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import icon from "../assets/a.png";
 import Input from "./../Components/Input";
 import Button from "../Components/Button";
+import {app} from "../firebase";
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
+import { useState } from "react";
+import ActivityLoader from "../Components/ActivityLoader";
 
 function ForgetPassword(props) {
   const [UserName, setUserName] = React.useState(null);
+  const auth=getAuth(app)
+  const [loader,setLoader]=useState(false)
+
+  const forget=()=>{
+    setLoader(true)
+    sendPasswordResetEmail(auth, UserName)
+    .then(() => {
+      // Password reset email sent!
+      // ..
+      props?.navigation?.goBack()
+      setLoader(false)
+    })
+    .catch((error) => {
+      setLoader(false)
+      
+      const errorCode = error.code;
+      Alert.alert("Ops",errorCode)
+      const errorMessage = error.message;
+      // ..
+    });
+  }
+  if(loader){
+    return <ActivityLoader/>
+  }
+  
   return (
     <View
       style={{
@@ -47,12 +77,14 @@ function ForgetPassword(props) {
           alignItems: "center",
         }}
       >
-        <Input
+        <Input value={UserName}
           onChange={setUserName}
           placeholder="Email"
           icon={() => <MaterialIcons name="email" size={24} color="#1C2348" />}
         />
-        <Button buttonName="SEND" disable={UserName ? false : true}></Button>
+        <Button onPress={()=>{
+          forget()
+        }} buttonName="SEND" disable={UserName ? false : true}></Button>
       </View>
       <View style={{
         width:"100%",

@@ -2,8 +2,29 @@ import React from 'react';
 import { Dimensions, Text, View } from 'react-native';
 import D from '../Components/D';
 import Button from '../Components/Button'
+import { useState } from 'react';
+import { useEffect } from 'react';
+import ActivityLoader from '../Components/ActivityLoader';
 const {width,height}=Dimensions.get("window")
-function Location(props) {
+import { getDatabase, ref, onValue } from "firebase/database";
+import { database } from '../firebase';
+
+function Location({navigation}) {
+    const [loader,setLoader]=useState(false)
+    const starCountRef = ref(database, 'train/');
+    const [station,setStation]=useState()
+    const [train,setTrain]=useState()
+    
+    
+    useEffect(()=>{
+        onValue(starCountRef, (snapshot) => {
+            const data = snapshot.val();
+            
+          })
+    },[])
+    if(loader){
+        return <ActivityLoader/>
+    }
     return (
         <View style={{
             height: '100%',
@@ -39,7 +60,7 @@ function Location(props) {
                     'Egarosindhur Goduli',
                 ]} />
                 <D style={{ width: width-100,
-                marginVertical:5 }} placeholder='Select Station' DATA={['Dhaka',
+                marginVertical:5 }} placeholder='Select Your station' DATA={['Dhaka',
                         'Chittagong',
                         'Dinajpur',
                         'Dewangong',
@@ -64,7 +85,9 @@ function Location(props) {
 
                     ]} />
             </View>
-            <Button buttonName='NEXT' />
+            <Button onPress={()=>{
+                navigation?.navigate("LocationSearch")
+            }} buttonName='NEXT' />
         </View>
     );
 }

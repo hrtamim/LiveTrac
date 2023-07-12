@@ -4,8 +4,18 @@ import Avatar from "../../Components/Avatar";
 import Input from "../../Components/Input";
 import { FontAwesome5 } from "@expo/vector-icons";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
+import { useState } from "react";
+import { useEffect } from "react";
 
-export default function AdminProfile() {
+export default function AdminProfile({route}) {
+  const [name,setName]=useState()
+  const data=route?.params?.data;
+  useEffect(()=>{
+    if(data){
+      setName(data?.name)
+    }
+  },[])
+
   return (
     <ScrollView
       style={{
@@ -62,7 +72,7 @@ export default function AdminProfile() {
             fontWeight: "200",
           }}
         >
-          q44353453
+          {data?.deviceId}
         </Text>
       </View>
       <View>
@@ -76,7 +86,9 @@ export default function AdminProfile() {
         >
           Train Name
         </Text>
-        <Input placeholder="Enter name" />
+        <Input onEndEditing={()=>{
+          
+        }} value={name}  onChange={setName} placeholder="Enter name" />
       </View>
     </ScrollView>
   );
