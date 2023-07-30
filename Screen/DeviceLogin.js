@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, Text, Image, SafeAreaView, View, TextInput, Alert, } from 'react-native';
+import { TouchableOpacity, Text, Image, SafeAreaView, View, TextInput, Alert, KeyboardAvoidingView, Platform, ScrollView, } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import icon from '../assets/a.png'
 import Input from './../Components/Input'
@@ -11,8 +11,8 @@ import { database } from '../firebase';
 import { getDatabase, ref, onValue } from "firebase/database";
 
 function DeviceLogin(props) {
-    const [UserName, setUserName] = React.useState(null);
-    const [Keyword, setKeyword] = React.useState(null);
+    const [UserName, setUserName] = React.useState("2641");
+    const [Keyword, setKeyword] = React.useState("123456");
 
     const check=()=>{
         onValue(ref(database,`train/${UserName}`), (snapshot) => {
@@ -25,11 +25,18 @@ function DeviceLogin(props) {
           });
     }
     return (
-        <View style={{
-
-            alignItems: 'center',
-            justifyContent: 'center',
+        <KeyboardAvoidingView 
+        behavior={Platform.OS === "ios" ? "padding" : null}
+        keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 0} style={{
+            flex:1
+            
         }}>
+            <ScrollView>
+            <View style={{
+                flex:1,
+                alignItems: 'center',
+            justifyContent: 'center',
+            }}>
             <View style={{
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -50,10 +57,10 @@ function DeviceLogin(props) {
                 marginTop:'8%',
                 alignItems:'center'
             }}>
-                <Input value={UserName} onChange={setUserName} placeholder='Device id' icon={() => (
+                <Input type="numeric" value={UserName} onChange={setUserName} placeholder='Device id' icon={() => (
                     <FontAwesome name="user-circle-o" size={30} color="#1C2348" />
                 )} />
-                <Input value={Password} onChange={setKeyword} placeholder='Keyword' icon={() => (
+                <Input type="numeric" value={Password} onChange={setKeyword} placeholder='Keyword' icon={() => (
                     <Entypo name="lock" size={30} color="#1C2348" />
                 )} />
                 <Button onPress={() => { 
@@ -79,8 +86,10 @@ function DeviceLogin(props) {
                     </Text>
                 </TouchableOpacity>
             </View>
+            </View>
+            </ScrollView>
 
-        </View>
+        </KeyboardAvoidingView>
     );
 }
 

@@ -40,7 +40,7 @@ export default function StationCart({ title, address, onDelete }) {
             onPress: () => console.log("Cancel Pressed"),
             style: "cancel"
           },
-          { text: "OK", onPress: () => console.log("OK Pressed") }
+          { text: "OK", onPress: () => onDelete() }
         ])
       }}>
         <MaterialCommunityIcons name="delete-sweep" size={24} color="black" />

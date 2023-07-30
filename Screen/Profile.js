@@ -17,7 +17,8 @@ const { width, height } = Dimensions.get("window");
 import i from "../assets/i.jpg";
 import { useEffect } from "react";
 import { getDatabase, ref, onValue, set } from "firebase/database";
-import { database } from "../firebase";
+import { auth, database } from "../firebase";
+import { signOut } from "firebase/auth";
 
 function Profile({ route }) {
   const [isEnabled, setIsEnabled] = useState(false);
@@ -229,8 +230,14 @@ function Profile({ route }) {
             <TouchableOpacity style={art.touch}>
               <Text>Help</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={art.touch}>
-              <Text>Policies</Text>
+            <TouchableOpacity onPress={()=>{
+              signOut(auth).then(() => {
+                // Sign-out successful.
+              }).catch((error) => {
+                // An error happened.
+              });
+            }} style={art.touch}>
+              <Text>LogOut</Text>
             </TouchableOpacity>
           </View>
         </View>

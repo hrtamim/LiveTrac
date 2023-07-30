@@ -53,7 +53,7 @@ function Home({navigation,route}) {
   return (
     <Tab.Navigator tabBar={(props) => <Bottom {...props} />}>
       <Tab.Screen
-        options={{ header: (props) => <Header {...props} /> }}
+        // options={{ header: (props) => <Header {...props} /> }}
         name="Home Screen"
         component={HomeScreen}
       />

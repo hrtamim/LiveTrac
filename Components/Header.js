@@ -27,12 +27,12 @@ function Header(props) {
             width: "90%",
           }}
         >
-          <Input
+          {/* <Input
             onPress={() => props.navigation.navigate("Search")}
             onChange={setSearch}
             placeholder="Search"
             icon={() => <Ionicons name="search" size={24} color="#1C2348" />}
-          />
+          /> */}
         </View>
       </View>
     </SafeAreaView>
